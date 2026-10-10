@@ -1,0 +1,9 @@
+PyQt5>=5.15
+python-xlib>=0.33
+
+# Development dependencies (optional)
+pytest>=8
+pytest-mock>=3.12
+
+# Testing dependencies
+pytest-cov
