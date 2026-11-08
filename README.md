@@ -1,15 +1,27 @@
-# Clipkeep
+<div align="center">
+
+<img src="assets/hero.svg" alt="Clipkeep - lightweight Linux clipboard manager" width="100%"/>
+
+<br/>
+
+![Version](https://img.shields.io/badge/version-v0.1.0-f5c542?style=for-the-badge)
+![Platform](https://img.shields.io/badge/platform-Linux%20(X11)-4a90ff?style=for-the-badge&logo=linux&logoColor=white)
+![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-28c840?style=for-the-badge)
+
+</div>
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Technical Architecture](#technical-architecture)
 - [Features](#features)
+- [Technical Architecture](#technical-architecture)
 - [Installation](#installation)
   - [Debian/Ubuntu (.deb package)](#debianubuntu-deb-package)
   - [AppImage (Standalone)](#appimage-standalone)
   - [Manual Installation](#manual-installation)
   - [Building from Source](#building-from-source)
+  - [Building Packages](#building-packages)
 - [Usage](#usage)
   - [Basic Operations](#basic-operations)
   - [Keyboard Shortcuts](#keyboard-shortcuts)
@@ -28,6 +40,12 @@
 
 Clipkeep is a lightweight Linux clipboard manager with a modern dark UI, featuring clipboard history (Recent), persistent Favorites, system tray integration, global hotkey (Insert), and a clean interface with preview functionality.
 
+<div align="center">
+
+<img src="assets/hotkey.svg" alt="Press Insert to show or hide Clipkeep" width="80%"/>
+
+</div>
+
 ### Project Details
 
 **Version:** v0.1.0
@@ -43,6 +61,18 @@ Clipkeep is a lightweight Linux clipboard manager with a modern dark UI, featuri
 - Cross-platform Linux compatibility
 - Focus on essential clipboard management features
 - Lightweight resource usage
+
+## Features
+
+| | Feature | Description |
+|---|---|---|
+| 📋 | **Clipboard History** | View and paste recent clipboard items (text, images, URLs) |
+| ⭐ | **Favorites** | Pin frequently used items for quick access |
+| 🌑 | **Modern Dark UI** | Clean, minimalist interface with preview panels |
+| 🔔 | **System Tray Integration** | Minimize to tray and access via the icon menu |
+| ⌨️ | **Global Hotkey** | Use the `Insert` key to quickly show/hide Clipkeep |
+| 🐧 | **Linux Ready** | Works on Linux distributions with X11 |
+| 🪶 | **Lightweight** | Minimal resource usage, focused on essential features |
 
 ## Technical Architecture
 
@@ -73,22 +103,9 @@ Clipkeep is a lightweight Linux clipboard manager with a modern dark UI, featuri
 ### Design Decisions
 
 1. **PyQt5 Migration:** Originally PySide6, switched to PyQt5 due to CPU limitations (lack of SSE4.2+popcnt instructions)
-
 2. **Hotkey Implementation:** Uses polling instead of `x11grab` to avoid conflicts with desktop environments like GNOME, KDE, etc.
-
 3. **Clipboard Monitoring:** 500ms polling timer for clipboard changes
-
 4. **Dark Theme:** Pure black/dark gray palette with gold accents for favorites
-
-## Features
-
-- **Clipboard History**: View and paste recent clipboard items (text, images, URLs)
-- **Favorites**: Pin frequently used items for quick access
-- **Modern Dark UI**: Clean, minimalist interface with preview panels
-- **System Tray Integration**: Minimize to tray and access via icon menu
-- **Global Hotkey**: Use `Insert` key to quickly show/hide clipboard manager
-- **Cross-Platform**: Works on Linux distributions with X11
-- **Lightweight**: Minimal resource usage, focused on essential features
 
 ## Installation
 
@@ -116,33 +133,26 @@ chmod +x Clipkeep.AppImage
 
 ### Building from Source
 
-To build Clipkeep from source, follow these steps:
-
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/ERROR404DTIR/clipkeep.git
    cd clipkeep
    ```
 
-2. **Navigate to the clipkeep directory**:
-   ```bash
-   cd clipkeep
-   ```
-
-3. **Install dependencies**:
+2. **Install dependencies**:
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
    ```
 
-4. **Run the application directly from source**:
+3. **Run the application directly from source**:
    ```bash
    cd src
    python3 -m clipkeep.main
    ```
 
-5. **Or install as a package**:
+4. **Or install as a package**:
    ```bash
    pip install -e .
    clipkeep
@@ -153,9 +163,6 @@ To build Clipkeep from source, follow these steps:
 For users who want to build the DEB package or AppImage manually from the source repository:
 
 ```bash
-# Navigate to the main project directory
-cd clipkeep
-
 # Build AppImage (standalone)
 ./build-appimage.sh
 
@@ -177,10 +184,12 @@ The built packages will be available in the `dist/` directory.
 
 ### Keyboard Shortcuts
 
-- **Insert**: Show/hide clipboard manager
-- **Esc**: Close popup/preview
-- **Delete**: Remove current item
-- **Arrow Keys**: Navigate items
+| Key | Action |
+|---|---|
+| `Insert` | Show/hide clipboard manager |
+| `Esc` | Close popup/preview |
+| `Delete` | Remove current item |
+| `↑` `↓` | Navigate items |
 
 ### Context Menu
 
@@ -225,16 +234,12 @@ The default hotkey is `Insert`. You can modify the hotkey behavior in the `hotke
 git clone https://github.com/ERROR404DTIR/clipkeep.git
 cd clipkeep
 
-# Navigate to the clipkeep directory (if working from clipkeep)
-cd clipkeep
-
 # Create virtual environment and install dependencies
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# Run tests from main project directory
-cd ..
+# Run tests
 pytest
 ```
 
@@ -288,4 +293,4 @@ See `releases/` for detailed release notes.
 
 ## Support
 
-For support, please give the repo star.
+For support, please give the repo a ⭐

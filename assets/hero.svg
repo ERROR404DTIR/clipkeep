@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280" role="img" aria-label="Clipkeep - lightweight Linux clipboard manager">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5c542" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f5c542" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0f14"/>
+      <stop offset="100%" stop-color="#151a24"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+    .glow { animation: glow 4s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { opacity: .35; } 50% { opacity: .9; } }
+    .line { transform-box: fill-box; transform-origin: left center; animation: grow 4s ease-in-out infinite; }
+    .l2 { animation-delay: .25s; }
+    .l3 { animation-delay: .5s; }
+    @keyframes grow { 0% { transform: scaleX(0); } 30%,80% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    .item { opacity: 0; animation: slide 6s ease-in-out infinite; }
+    .i2 { animation-delay: .7s; }
+    .i3 { animation-delay: 1.4s; }
+    @keyframes slide {
+      0%   { opacity: 0; transform: translateX(34px); }
+      12%  { opacity: 1; transform: translateX(0); }
+      85%  { opacity: 1; transform: translateX(0); }
+      100% { opacity: 0; transform: translateX(-12px); }
+    }
+    .star { transform-box: fill-box; transform-origin: center; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+    .bar { transform-box: fill-box; transform-origin: left center; animation: bar 3s ease-in-out infinite; }
+    @keyframes bar { 0%,100% { transform: scaleX(.35); } 50% { transform: scaleX(1); } }
+  </style>
+
+  <rect width="900" height="280" rx="18" fill="url(#bg)"/>
+  <rect x="1" y="1" width="898" height="278" rx="17" fill="none" stroke="#2a2f3a"/>
+  <circle class="glow" cx="140" cy="140" r="140" fill="url(#glow)"/>
+
+  <!-- clipboard icon -->
+  <g transform="translate(88,62)">
+    <rect x="0" y="18" width="104" height="136" rx="14" fill="#1d222c" stroke="#f5c542" stroke-width="4"/>
+    <rect x="30" y="2" width="44" height="30" rx="9" fill="#f5c542"/>
+    <circle cx="52" cy="14" r="4" fill="#1d222c"/>
+    <rect class="line" x="20" y="62" width="64" height="9" rx="4.5" fill="#4a90ff"/>
+    <rect class="line l2" x="20" y="88" width="48" height="9" rx="4.5" fill="#4a90ff" opacity=".75"/>
+    <rect class="line l3" x="20" y="114" width="58" height="9" rx="4.5" fill="#4a90ff" opacity=".5"/>
+  </g>
+
+  <!-- title -->
+  <text class="t" x="236" y="128" font-size="58" font-weight="800" fill="#ffffff">Clipkeep</text>
+  <text class="t" x="238" y="164" font-size="19" fill="#9aa4b2">Lightweight Linux clipboard manager</text>
+  <rect class="bar" x="238" y="182" width="150" height="4" rx="2" fill="#f5c542"/>
+  <text class="t" x="238" y="216" font-size="15" fill="#6b7585">History  |  Favorites  |  Global hotkey</text>
+
+  <!-- popup window -->
+  <rect x="570" y="28" width="300" height="224" rx="14" fill="#10131a" stroke="#2a2f3a"/>
+  <circle cx="590" cy="46" r="4" fill="#ff5f57"/>
+  <circle cx="606" cy="46" r="4" fill="#febc2e"/>
+  <circle cx="622" cy="46" r="4" fill="#28c840"/>
+  <text class="t" x="700" y="50" font-size="12" fill="#9aa4b2">Recent</text>
+  <text class="t" x="770" y="50" font-size="12" fill="#6b7585">Favorites</text>
+  <rect x="700" y="56" width="38" height="2" rx="1" fill="#f5c542"/>
+
+  <g class="item">
+    <rect x="586" y="70" width="268" height="50" rx="9" fill="#1d222c"/>
+    <text class="mono" x="600" y="91" font-size="12" fill="#e6edf3">git clone https://github.com/</text>
+    <text class="t" x="600" y="108" font-size="10" fill="#6b7585">URL</text>
+    <polygon points="0,-8 2.4,-2.5 8,-2.5 3.5,1.2 5,7 0,3.6 -5,7 -3.5,1.2 -8,-2.5 -2.4,-2.5" transform="translate(836,95)" fill="#3a4150"/>
+  </g>
+
+  <g class="item i2">
+    <rect x="586" y="130" width="268" height="50" rx="9" fill="#1d222c" stroke="#f5c542" stroke-opacity=".5"/>
+    <text class="mono" x="600" y="151" font-size="12" fill="#e6edf3">sudo apt install clipkeep</text>
+    <text class="t" x="600" y="168" font-size="10" fill="#6b7585">Text</text>
+    <g transform="translate(836,155)">
+      <polygon class="star" points="0,-8 2.4,-2.5 8,-2.5 3.5,1.2 5,7 0,3.6 -5,7 -3.5,1.2 -8,-2.5 -2.4,-2.5" fill="#f5c542"/>
+    </g>
+  </g>
+
+  <g class="item i3">
+    <rect x="586" y="190" width="268" height="50" rx="9" fill="#1d222c"/>
+    <text class="mono" x="600" y="211" font-size="12" fill="#e6edf3">Hello, world!</text>
+    <text class="t" x="600" y="228" font-size="10" fill="#6b7585">Text</text>
+    <polygon points="0,-8 2.4,-2.5 8,-2.5 3.5,1.2 5,7 0,3.6 -5,7 -3.5,1.2 -8,-2.5 -2.4,-2.5" transform="translate(836,215)" fill="#3a4150"/>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="150" viewBox="0 0 760 150" role="img" aria-label="Press Insert to show or hide Clipkeep">
+  <style>
+    .t { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    .key { animation: press 4s ease-in-out infinite; }
+    @keyframes press {
+      0%,18%  { transform: translateY(0); }
+      24%,34% { transform: translateY(5px); }
+      42%,100% { transform: translateY(0); }
+    }
+    .arrow { stroke-dasharray: 8 8; animation: flow 1s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -16; } }
+    .win { transform-box: fill-box; transform-origin: center; opacity: 0; animation: pop 4s ease-in-out infinite; }
+    @keyframes pop {
+      0%,30%  { opacity: 0; transform: scale(.85); }
+      42%,80% { opacity: 1; transform: scale(1); }
+      92%,100% { opacity: 0; transform: scale(.85); }
+    }
+    .row { transform-box: fill-box; transform-origin: left center; animation: rows 4s ease-in-out infinite; }
+    .r2 { animation-delay: .15s; }
+    .r3 { animation-delay: .3s; }
+    @keyframes rows { 0%,40% { transform: scaleX(0); } 55%,80% { transform: scaleX(1); } 95%,100% { transform: scaleX(0); } }
+  </style>
+
+  <rect width="760" height="150" rx="16" fill="#0d0f14"/>
+  <rect x="1" y="1" width="758" height="148" rx="15" fill="none" stroke="#2a2f3a"/>
+
+  <!-- keyboard key -->
+  <rect x="70" y="50" width="140" height="60" rx="12" fill="#07080b"/>
+  <g class="key">
+    <rect x="70" y="40" width="140" height="60" rx="12" fill="#232a36" stroke="#f5c542" stroke-width="2"/>
+    <text class="t" x="140" y="78" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">Insert</text>
+  </g>
+
+  <!-- arrow -->
+  <path class="arrow" d="M240 75 H400" fill="none" stroke="#f5c542" stroke-width="3" stroke-linecap="round"/>
+  <path d="M394 63 L412 75 L394 87" fill="none" stroke="#f5c542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- popup window -->
+  <g class="win">
+    <rect x="450" y="18" width="250" height="114" rx="12" fill="#10131a" stroke="#2a2f3a"/>
+    <circle cx="468" cy="34" r="4" fill="#ff5f57"/>
+    <circle cx="483" cy="34" r="4" fill="#febc2e"/>
+    <circle cx="498" cy="34" r="4" fill="#28c840"/>
+    <rect class="row" x="468" y="54" width="200" height="12" rx="6" fill="#4a90ff"/>
+    <rect class="row r2" x="468" y="78" width="150" height="12" rx="6" fill="#4a90ff" opacity=".7"/>
+    <rect class="row r3" x="468" y="102" width="175" height="12" rx="6" fill="#4a90ff" opacity=".45"/>
+  </g>
+
+  <text class="t" x="140" y="136" font-size="13" fill="#6b7585" text-anchor="middle">press</text>
+  <text class="t" x="575" y="146" font-size="13" fill="#6b7585" text-anchor="middle"> </text>
+</svg>
