@@ -16,6 +16,7 @@ class HotkeyBackend(QObject):
         self._error: HotkeyError | None = None
         self._insert_pressed = False
         self._insert_code = 118
+        self._display = None
 
     @property
     def error(self) -> HotkeyError | None:
@@ -28,28 +29,16 @@ class HotkeyBackend(QObject):
             )
             return
 
-        # Check if another instance is running
-        lock_file = os.path.expanduser("~/.local/share/clipkeep/clipkeep.lock")
-        if os.path.exists(lock_file):
-            try:
-                fd = os.open(lock_file, os.O_RDONLY)
-                import fcntl
-                # Try to acquire exclusive lock - if we can't, another instance is running
-                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-                os.close(fd)
-                # Lock acquired, so we're the primary instance
-            except (IOError, OSError):
-                # Another instance is already running
-                self._error = HotkeyError(
-                    "Clipkeep is already running. Global hotkeys disabled."
-                )
-                return
+        # Note: single-instance enforcement lives in App (app.py). Do not probe the
+        # lock file here: flock() on a second file descriptor in the same process
+        # conflicts with the lock App already holds and would disable hotkeys.
 
         try:
             from Xlib import XK, display
-            d = display.Display()
+            # Open the X connection once and reuse it for every poll.
+            self._display = display.Display()
             insert_keysym = XK.string_to_keysym("Insert")
-            self._insert_code = d.keysym_to_keycode(insert_keysym)
+            self._insert_code = self._display.keysym_to_keycode(insert_keysym)
             self._enabled = True
             self._poll_keys()
         except Exception as exc:
@@ -57,15 +46,19 @@ class HotkeyBackend(QObject):
 
     def stop(self) -> None:
         self._enabled = False
+        if self._display is not None:
+            try:
+                self._display.close()
+            except Exception:
+                pass
+            self._display = None
 
     def _poll_keys(self) -> None:
-        if not self._enabled:
+        if not self._enabled or self._display is None:
             return
 
         try:
-            from Xlib import display
-            d = display.Display()
-            mask = d.query_keymap()
+            mask = self._display.query_keymap()
             insert_down = bool(mask[self._insert_code // 8] & (1 << (self._insert_code % 8)))
 
             if insert_down and not self._insert_pressed:
