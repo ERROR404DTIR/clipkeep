@@ -1,5 +1,7 @@
 <div align="center">
 
+<p align="center"><img src="assets/readme-banner.svg" alt="Animated ClipKeep clipboard banner" width="100%"></p>
+
 <img src="assets/hero.svg" alt="Clipkeep - lightweight Linux clipboard manager" width="100%"/>
 
 <br/>
@@ -66,13 +68,13 @@ Clipkeep is a lightweight Linux clipboard manager with a modern dark UI, featuri
 
 | | Feature | Description |
 |---|---|---|
-| 📋 | **Clipboard History** | View and paste recent clipboard items (text, images, URLs) |
-| ⭐ | **Favorites** | Pin frequently used items for quick access |
-| 🌑 | **Modern Dark UI** | Clean, minimalist interface with preview panels |
-| 🔔 | **System Tray Integration** | Minimize to tray and access via the icon menu |
-| ⌨️ | **Global Hotkey** | Use the `Insert` key to quickly show/hide Clipkeep |
-| 🐧 | **Linux Ready** | Works on Linux distributions with X11 |
-| 🪶 | **Lightweight** | Minimal resource usage, focused on essential features |
+|  | **Clipboard History** | View and paste recent clipboard items (text, images, URLs) |
+|  | **Favorites** | Pin frequently used items for quick access |
+|  | **Modern Dark UI** | Clean, minimalist interface with preview panels |
+|  | **System Tray Integration** | Minimize to tray and access via the icon menu |
+| ️ | **Global Hotkey** | Use the `Insert` key to quickly show/hide Clipkeep |
+|  | **Linux Ready** | Works on Linux distributions with X11 |
+|  | **Lightweight** | Minimal resource usage, focused on essential features |
 
 ## Technical Architecture
 
@@ -293,4 +295,4 @@ See `releases/` for detailed release notes.
 
 ## Support
 
-For support, please give the repo a ⭐
+For support, please give the repo a 
